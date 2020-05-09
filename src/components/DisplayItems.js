@@ -1,14 +1,14 @@
 import React from 'react'
 
 export default function DisplayItems(props){
-  const itemList = props.items.meals.map(item => {
-    return (<li>{item.strMeal}</li>)
+  var itemList = props.items.meals.map(item => {
+    return (<li key={item.idMeal}>{item.strMeal}</li>)
   })
+  
   return (
     <div>
-      <ul>
-        {itemList}
-      </ul>
+      <ul>{itemList}</ul>
+      <p style={{fontSize:20}}>{props.items.message}</p>
     </div>
   )
 }
