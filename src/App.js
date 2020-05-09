@@ -1,13 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState } from 'react';
 import './App.css';
+import { Container } from 'reactstrap';
+import Footer from './components/Footer'
+import InputForm from './components/InputForm'
+import DisplayItems from './components/DisplayItems'
 
-function App() {
-  return (
-    <div>
-      <h1>Bhushan Mhatre</h1>
-    </div>
-  );
+
+export default function App() {
+  const [data, setData] = useState({meals: []})
+
+  const getDish = async() => {
+    let receipename = document.getElementById('receipename').value
+    let url = "https://www.themealdb.com/api/json/v1/1/search.php?s="+receipename
+    let response = await fetch(url)
+    let mealData = await response.json()
+    console.log('data', mealData)
+    setData(mealData)
+  }
+
+  return(
+    <Container>
+      <InputForm getDish={getDish} />
+      <DisplayItems items={data} />
+      <Footer />
+    </Container>
+  )
 }
-
-export default App;
