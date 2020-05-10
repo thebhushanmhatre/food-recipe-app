@@ -18,12 +18,12 @@ export default function InputForm(props){
     <Row className="bg-dark text-light text-center"
       style={{paddingTop: 20,  paddingLeft: 5, paddingBottom: 10, alignItems:'center'}}>
       <Col sm='12' md='3' lg='3' className='mb-2'>
-         <i className="fa fa-cutlery fa-lg" aria-hidden="true"> Receipes App</i>
+         <i className="fa fa-cutlery fa-lg" aria-hidden="true"> Recipes App</i>
       </Col>
       <Col sm='12' md='6' lg='7' className='mb-2'>
-        <Input autoFocus={true} type="name" name="receipename" id="receipename"
+        <Input autoFocus={true} type="name" name="recipename" id="recipename"
            onChange={e => setInput(e.value)} onKeyPress={onKeyPress}
-          placeholder="Search your Receipe . . ." value={input} />
+          placeholder="Search Recipe . . ." value={input} />
       </Col>
       <Col sm='12' md='3' lg='2' className='mb-2 text-center'>
         <Button type="submit" color="primary" onClick={sendDish}>

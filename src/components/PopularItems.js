@@ -8,6 +8,6 @@ export default function PopularItems(props){
   })
 
   return(
-    <Alert color="success" style={{marginTop: 20}} >Some Popular Dishes : {popular_items}</Alert>
+    <Alert color="success" style={{marginTop: 20}} >Some Popular Recipes : {popular_items}</Alert>
   )
 }

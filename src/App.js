@@ -12,28 +12,28 @@ export default function App() {
   const [input, setInput] = useState('')  
   
   const getDish = async() => {
-    let receipename = document.getElementById('receipename').value
-    setInput(receipename)
-    if(receipename != null && receipename.length > 0){
-      let url = "https://www.themealdb.com/api/json/v1/1/search.php?s="+receipename
+    let recipename = document.getElementById('recipename').value
+    setInput(recipename)
+    if(recipename != null && recipename.length > 0){
+      let url = "https://www.themealdb.com/api/json/v1/1/search.php?s="+recipename
       let response = await fetch(url)
       let mealData = await response.json()
       if (mealData.meals != null){
         setData(mealData)
       }
       else if (mealData.meals==null) {
-        let msg = 'No Dishes found with name: "' + receipename + '"'
+        let msg = 'No Recipe found with name: "' + recipename + '"'
         setData({meals: [], message: msg})
       }
     }
   }
 
-  const getPopularDish = async(receipename) => {
-    let url = "https://www.themealdb.com/api/json/v1/1/search.php?s="+receipename
+  const getPopularDish = async(recipename) => {
+    let url = "https://www.themealdb.com/api/json/v1/1/search.php?s="+recipename
     let response = await fetch(url)
     let mealData = await response.json()
     setData(mealData)
-    setInput(receipename)
+    setInput(recipename)
   }
 
   const goHome = () => {

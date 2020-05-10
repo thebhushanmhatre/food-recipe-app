@@ -46,9 +46,11 @@ function RenderItem({item}){
     <Card style={{margin: 10}}>
       <CardBody>
         <CardTitle><h3>{item.strMeal}</h3></CardTitle>
-        <CardSubtitle>{item.strTags}</CardSubtitle>
+        {(item.strTags) &&
+          <CardSubtitle>{item.strTags.split(',').join(', ')}</CardSubtitle>
+        }
       <Button color="primary" onClick={toggle} style={{ marginTop: 10, marginBottom: 10}}>
-      <i className="fa fa-align-justify fa-lg" aria-hidden="true"> See Receipe</i></Button>
+      <i className="fa fa-align-justify fa-lg" aria-hidden="true"> See Recipe</i></Button>
       <a href={item.strYoutube} target="_blank" rel="noopener noreferrer">
         <Button color="danger" onClick={toggle} style={{ margin: 10}}>
           <i className="fa fa-youtube-play fa-lg" aria-hidden="true"> Watch</i>
