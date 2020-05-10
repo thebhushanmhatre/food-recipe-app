@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import { Card, Collapse, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { Card, Collapse, CardText, CardBody, CardTitle, CardSubtitle, Button,
+          Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 export default function DisplayItems(props){
   var itemList = props.items.meals.map(i => {
@@ -8,6 +9,12 @@ export default function DisplayItems(props){
 
   return(
     <div>
+      {(props.input.length > 0) && 
+        <Breadcrumb className='m-3'>
+          <BreadcrumbItem><a href="/" onClick={props.goHome}>Home</a></BreadcrumbItem>
+          <BreadcrumbItem active>{props.input}</BreadcrumbItem>
+        </Breadcrumb>
+      }
       <div>{itemList}</div>
       <p style={{fontSize:20}}>{props.items.message}</p>
     </div>
