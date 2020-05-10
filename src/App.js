@@ -72,7 +72,7 @@ export default function App() {
         setData(mealData)
       }
       else if (mealData.meals==null) {
-        let msg = 'No Dishes found with name: "'+receipename+'"'
+        let msg = 'No Dishes found with name: "' + receipename + '"'
         setData({meals: [], message: msg})
       }
     }
@@ -88,11 +88,13 @@ export default function App() {
   return(
     <Container>
       <InputForm getDish={getDish} />
-      <DisplayItems items={data} />
       {(data.meals==null || data.meals.length<4) &&
         <PopularItems getPopularDish={getPopularDish} />
       }
-      <Footer />
+      <div style={{marginBottom: 70}}>
+        <DisplayItems items={data} />
+      </div>
+      <Footer/>
     </Container>
   )
 }

@@ -17,13 +17,11 @@ export default function DisplayItems(props){
 // Single Element
 function RenderItem({item}){
   const [isOpen, setIsOpen] = useState(false);
-
   const toggle = () => setIsOpen(!isOpen);
-
   const getElements = (item) => {
     let nums = Array.from(Array(20).keys())
     let elements = []
-    nums.map(i => {
+    nums.forEach(i => {
       let element = item['strIngredient'+ (i+1)]
       let quantity = item['strMeasure'+ (i+1)]
       if(element)
@@ -40,15 +38,20 @@ function RenderItem({item}){
   return (
     <Card style={{margin: 10}}>
       <CardBody>
-        <CardTitle>{item.strMeal}</CardTitle>
+        <CardTitle><h3>{item.strMeal}</h3></CardTitle>
         <CardSubtitle>{item.strTags}</CardSubtitle>
-      <Button color="primary" onClick={toggle} style={{ marginTop: 10, marginBottom: 10}}>Receipe</Button>
+      <Button color="primary" onClick={toggle} style={{ marginTop: 10, marginBottom: 10}}>
+      <i className="fa fa-align-justify fa-lg" aria-hidden="true"> See Receipe</i></Button>
+      <a href={item.strYoutube} target="_blank" rel="noopener noreferrer">
+        <Button color="danger" onClick={toggle} style={{ margin: 10}}>
+          <i className="fa fa-youtube-play fa-lg" aria-hidden="true"> Watch</i>
+        </Button>
+      </a>
         <Collapse isOpen={isOpen}>
-          <CardText>Ingredients required: <ul>{getElements(item)}</ul></CardText>
-          <CardText>Instructions: <ol>{getSteps(item)}</ol></CardText>
+          <CardText><u>Ingredients required:</u><ul>{getElements(item)}</ul></CardText>
+          <CardText><u>Instructions:</u> <ol>{getSteps(item)}</ol></CardText>
         </Collapse>
       </CardBody>
     </Card>
   )
-
 }
