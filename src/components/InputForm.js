@@ -8,15 +8,15 @@ export default function InputForm(props){
     }
   }
   return (
-    <Row style={{padding: 20, marginTop:10, alignItems:'center'}}>
+    <Row className="bg-dark text-light" style={{padding: 20, alignItems:'center'}}>
       <Col sm='12' md='3' lg='2' className='mr-1 mb-2'>
         <p style={{fontSize:20}}>Receipe App</p>
       </Col>
-      <Col sm='12' md='5' lg='6' className='mr-1 mb-2'>
+      <Col sm='12' md='6' lg='7' className='mr-1 mb-2'>
         <Input autoFocus={true} type="name" name="receipename" id="receipename"
          placeholder="Search your Receipe . . ." onKeyPress={onKeyPress} />
       </Col>
-      <Col sm='12' md='3' lg='2' className='mr-1 mb-2'>
+      <Col sm='12' md='2' lg='1' className='mr-1 mb-2'>
         <Button type="submit" color="primary" onClick={props.getDish}>Submit</Button>
       </Col>
     </Row>

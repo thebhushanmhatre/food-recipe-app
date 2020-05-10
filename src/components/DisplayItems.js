@@ -23,8 +23,13 @@ function RenderItem({item}){
   const getElements = (item) => {
     let nums = Array.from(Array(20).keys())
     let elements = []
-    nums.map(i => elements.push(item['strIngredient'+ (i+1)]))
-    return [...elements.filter(x=>x)].join(', ')
+    nums.map(i => {
+      let element = item['strIngredient'+ (i+1)]
+      let quantity = item['strMeasure'+ (i+1)]
+      if(element)
+        elements.push(element + " -> "+ quantity)
+    })
+    return [...elements.filter(x=>x)].map(p=><li>{p}.</li>)
   }
 
   const getSteps = (item) => {
@@ -39,7 +44,7 @@ function RenderItem({item}){
         <CardSubtitle>{item.strTags}</CardSubtitle>
       <Button color="primary" onClick={toggle} style={{ marginTop: 10, marginBottom: 10}}>Receipe</Button>
         <Collapse isOpen={isOpen}>
-          <CardText>Ingredients: {getElements(item)}</CardText>
+          <CardText>Ingredients required: <ul>{getElements(item)}</ul></CardText>
           <CardText>Instructions: <ol>{getSteps(item)}</ol></CardText>
         </Collapse>
       </CardBody>
